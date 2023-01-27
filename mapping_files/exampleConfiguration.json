@@ -4,6 +4,7 @@
         "multiFieldDelimiter": "<^>",
         "okapiUrl": "https://OKAPI_URL",
         "okapiUsername": "USERNAME",
+        "libraryName" : "NAME_OF_YOUR_LIBRARY",
         "logLevelDebug": false,
         "folioRelease": "morning-glory",
         "addTimeStampToFileNames": false,
