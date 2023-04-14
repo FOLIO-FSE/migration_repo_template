@@ -41,6 +41,17 @@ Your repository should look like this:
 3. Save the file   
 
 ## 3. Install the tools and make sure they can run
+### Using poetry
+1. Create virtual environment, install dependencies, and activate
+```
+poetry install
+poetry shell
+```
+2. Test the installation by showing the help pages
+```
+python -m folio_migration_tools -h
+```
+### Using venv
 1. Create and activate a virtual environment
 First, go to the root of the repository. Then run the following
 ```
@@ -49,19 +60,19 @@ source .venv/bin/activate  # Activates the venv
 ```
 2. Install using pip:
 ```
-python -m pip install folio_migration_tools
+python -m pip install -r requirements.txt
 ```
 3. Test the installation by showing the help pages
 ```
 python -m folio_migration_tools -h
 ```
-## Transform the bibs into FOLI Instances and SRS records
+## Transform the bibs into FOLIO Instances and SRS records
 The following command will invoke the first of the three tasks in the configuration task, the **transform_bibs** one. Have your password ready.
 ```
 python -m folio_migration_tools mapping_files/exampleConfiguration.json --base_folder_path ./ transform_bibs
 ```
 Congratulations! You have now completed the first step. Take a lookaround in the results and reports folders in iterations/test_iteration to get an understanding for what has happened.
-## Post the Instances into FOLI Instances and SRS records
+## Post the Instances into FOLIO Instances and SRS records
 ```
 python -m folio_migration_tools mapping_files/exampleConfiguration.json --base_folder_path ./ post_instances
 ```
