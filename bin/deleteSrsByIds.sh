@@ -9,7 +9,7 @@ usage() {
   cat <<EOF
   Deletes records from FOLIO Source Record Storage according to an FSE migration tools "transform" file.
   The transform file contains the SRS records to be deleted in the format FOLIO JSON.
-  Sample Calls:          ./deleteSrsByIds.sh -t mytenant -d /home/user/migration_repo_template/iterations/test_iteration/results/ -f folio_srs_holdings_transform_mfhd.json > deleteSrsByIds.instances.log
+  Sample Calls:          ./deleteSrsByIds.sh -t mytenant -d /home/user/migration_repo_template/iterations/test_iteration/results/ -f folio_srs_holdings_transform_mfhd.json > deleteSrsByIds.holdings.log
                          ./deleteSrsByIds.sh -t mytenant -u http://myhost/okapi -t mytenant -l login.json -f folio_srs_instances_transform_bibs.json > deleteSrsByIds.instances.log
 
   Command line options:
