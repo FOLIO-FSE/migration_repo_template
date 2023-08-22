@@ -1,0 +1,40 @@
+name: Create PDFs from reports
+
+on: push
+
+jobs:
+  create_pdfs:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: get changed reports
+        id: get_changed_files
+        run: |
+          files=$(git diff $CI_COMMIT_BEFORE_SHA $GI_COMMIT_SHA --name-only --diff-filter=d -- '***.md' '***.csv' '***.tsv');
+          echo "files=${files//$'\n'/' '}" > $GITHUB_OUTPUT;
+        env:
+          CI_COMMIT_BEFORE_SHA: ${{ github.event.before }}
+          GI_COMMIT_SHA: ${{ github.event.after }}
+      - name: convert
+        if: steps.get_changed_files.outputs.files
+        uses: docker://pandoc/latex:3
+        with:
+          entrypoint: /bin/sh
+          args: >-
+            -c
+            "
+            for report in ${{ steps.get_changed_files.outputs.files }};
+            do
+              pandoc -o \"${report%.*}.pdf\" $report;
+            done;
+            "
+      - name: commit
+        if: steps.get_changed_files.outputs.files
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: '***.pdf'
+          message: 'autogen pdfs'
+      
