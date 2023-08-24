@@ -28,13 +28,13 @@ jobs:
             "
             for report in ${{ steps.get_changed_files.outputs.files }};
             do
-              pandoc -o \"${report%.*}.pdf\" $report;
+              pandoc --pdf-engine=xelatex -o \"${report%.*}.pdf\" $report;
             done;
             "
       - name: commit
         if: steps.get_changed_files.outputs.files
         uses: EndBug/add-and-commit@v9
         with:
-          add: '***.pdf'
+          add: '-f ***.pdf'
           message: 'autogen pdfs'
       
