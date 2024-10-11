@@ -14,4 +14,6 @@ env/source_data/
 venv/
 sftp.json
 .env
+.env.local
+.env.dev
 poetry.lock
