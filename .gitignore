@@ -17,3 +17,4 @@ sftp.json
 .env.local
 .env.dev
 poetry.lock
+.idea
