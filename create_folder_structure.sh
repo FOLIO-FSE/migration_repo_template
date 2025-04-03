@@ -1,9 +1,0 @@
-mkdir -p iterations/test_iteration;
-mkdir -p iterations/test_iteration/results;
-mkdir -p iterations/test_iteration/reports;
-mkdir -p iterations/test_iteration/source_data/instances;
-mkdir -p iterations/test_iteration/source_data/holdings;
-mkdir -p iterations/test_iteration/source_data/items;
-mkdir -p iterations/test_iteration/source_data/users;
-mkdir -p iterations/test_iteration/source_data/loans;
-mkdir -p iterations/test_iteration/source_data/courses;

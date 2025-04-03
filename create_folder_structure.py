@@ -13,16 +13,30 @@ FOLDERS = [
 ]
 
 
-def create_fol(iteration: str) -> None:
+def create_folders_for_iteration(iteration: str) -> None:
     for fol in FOLDERS:
         new_fol = os.path.join("iterations", iteration, fol)
         if not os.path.exists(new_fol):
             os.makedirs(new_fol)
 
 
-if __name__ == "__main__":
+def create_folders() -> None:
     args = sys.argv[1:]
     if len(args) == 0:
-        raise ValueError("Provide an iteration name")
-    for i in args:
-        create_fol(i)
+        print(
+            "Creating folder structure 'test_iteration'...\n"
+            f"\n{'*' * 79}\n"
+            "If you would like to provide other iteration identifier(s), please use:\n"
+            "\tcreate_folder_structure.py iter_identifier_1 [iter_identifier_2 ...]\n"
+            f"{'*' * 79}"
+        )
+        create_folders_for_iteration("test_iteration")
+    else:
+        for i in args:
+            print(f"Creating folder structure for iteration identifier '{i}'...", end=" ")
+            create_folders_for_iteration(i)
+            print("Done!")
+
+
+if __name__ == "__main__":
+    create_folders()
