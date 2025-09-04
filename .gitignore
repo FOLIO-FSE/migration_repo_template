@@ -16,5 +16,6 @@ sftp.json
 .env
 .env.local
 .env.dev
-poetry.lock
+*.lock
 .idea
+pylock.toml
