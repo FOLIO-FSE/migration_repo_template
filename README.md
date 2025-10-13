@@ -6,9 +6,9 @@ It contains example data and mapping files to help you kick-start a data migrati
 # Getting started/ Giving it a try
 This is a quick guide on how to transform and load bib-level MARC records into a FOLIO tenant. 
 ## Prerequisites
-* Make sure you have **Python 3.9** or higher installed. We recommend using [pyenv](https://github.com/pyenv/pyenv) for managing various Python versions
+* Make sure you have **Python 3.13** or higher installed. We recommend using [uv](https://github.com/astral-sh/uv#installation) for managing various Python versions and your project's dependencies
 * You need access to a FOLIO tenant, with the following properties:
-   * The **OKAPI url** to the tenant
+   * The **Gateway url** to the tenant (formerly Okapi URL)
    * The **Tenant id** for the tenant
    * A **username** and **password** for a user with the right permission sets
 * A file of MARC21 Bib records in .mrc (binary) format
@@ -25,7 +25,7 @@ git clone git@github.com:FOLIO-FSE/migration_repo_template.git
 ### Step into the repo and create the example folder structure py running
 ```bash
 cd migration_repo_template
-python create_folder_structure.py
+uv run create_folder_structure.py
 ```
 Also, you can use this script for creating folder structures for different iterations.
 
@@ -39,46 +39,27 @@ Your repository should look like this:
 3. Save the file   
 
 ## 3. Install the tools and make sure they can run
-### Using poetry
+### Using uv
 1. Create virtual environment, install dependencies, and activate
 ```bash
-poetry install
-poetry shell
+uv sync install
+uv run python
 ```
 2. Test the installation by showing the help pages
 ```bash
-python -m folio_migration_tools -h
-```
-### Using venv
-1. Create and activate a virtual environment
-First, go to the root of the repository. Then run the following
-```bash
-python -m venv ./.venv     # Creates a virtual env in the current folder
-source .venv/bin/activate  # Activates the venv
-```
-2. Install using pip:
-```bash
-python -m pip install -r requirements.txt
-```
-3. Test the installation by showing the help pages
-```bash
-python -m folio_migration_tools -h
+uv run folio-migration-tools -h
 ```
 ## Transform the bibs into FOLIO Instances and SRS records
 The following command will invoke the first of the three tasks in the configuration task, the **transform_bibs** one. Have your password ready.
 ```bash
-python -m folio_migration_tools mapping_files/exampleConfiguration.json --base_folder_path ./ transform_bibs
+folio-migration-tools mapping_files/exampleConfiguration.json --base_folder_path ./ transform_bibs
 ```
 Congratulations! You have now completed the first step. Take a lookaround in the results and reports folders in iterations/test_iteration to get an understanding for what has happened.
 ## Post the Instances into FOLIO Instances and SRS records
 ```bash
-python -m folio_migration_tools mapping_files/exampleConfiguration.json --base_folder_path ./ post_instances
-```
-## Post the SRS (MARC) Records into FOLIO
-```bash
-python -m folio_migration_tools mapping_files/exampleConfiguration.json --base_folder_path ./ post_srs_bibs
+folio-migration-tools mapping_files/exampleConfiguration.json --base_folder_path ./ post_instances
 ```
 Now, you can go off and explore the records in the FOLIO tenant! Make sure to check all the reports and lists of failed records in the reports and results folders!
 
 
-For complete documentation on how to run the process, refer to [Read the Docs](https://folio-migration-tools.readthedocs.io/) (under construction)
+For complete documentation on how to run the process, refer to [Read the Docs](https://folio-migration-tools.readthedocs.io/)
