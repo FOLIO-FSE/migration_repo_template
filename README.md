@@ -49,6 +49,19 @@ uv run python
 ```bash
 uv run folio-migration-tools -h
 ```
+3. Activate your virtual environment so you can stop typing `uv run`
+```bash
+source .venv/bin/activate
+```
+4. Create a `.env` file for your project's FOLIO credentials
+```bash
+touch .env
+```
+5. Open the `.env` file and add lines like this
+```bash
+USERNAME=diku_admin
+PASSWORD=admin
+```
 ## Transform the bibs into FOLIO Instances and SRS records
 The following command will invoke the first of the three tasks in the configuration task, the **transform_bibs** one. Have your password ready.
 ```bash
