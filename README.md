@@ -42,7 +42,7 @@ Your repository should look like this:
 ### Using uv
 1. Create virtual environment, install dependencies, and activate
 ```bash
-uv sync install
+uv sync
 uv run python
 ```
 2. Test the installation by showing the help pages
