@@ -37,15 +37,19 @@
             ]
         },
         {
-            "name": "post_srs_bibs",
-            "migrationTaskType": "BatchPoster",
-            "objectType": "SRS",
-            "batchSize": 250,
+            "name": "import_marc_bibs",
+            "migrationTaskType": "MARCImportTask",
+            "importProfileName": "Inventory Single Record - Default Update Instance",
+            "batchSize": 150,
             "files": [
                 {
-                    "file_name": "folio_srs_instances_transform_bibs.json"
+                    "file_name": "folio_marc_instances_transform_bibs.mrc"
                 }
-            ]
+            ],
+            "split_files": true,
+            "split_size": 1000,
+            "showFileNamesInDataImportLogs": true,
+            "letSummaryFail": true
         }
     ]
 }
